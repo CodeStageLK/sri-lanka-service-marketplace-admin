@@ -7,6 +7,17 @@ afterEach(() => {
 });
 
 describe('health API client', () => {
+  it('uses the same-origin Vite proxy in development', async () => {
+    vi.stubEnv('MODE', 'development');
+    vi.stubEnv('VITE_API_BASE_URL', 'http://localhost:3000/api/v1');
+    const fetchMock = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify({ status: 'ok' }), { status: 200 }),
+    );
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(getHealth()).resolves.toEqual({ status: 'ok' });
+    expect(fetchMock).toHaveBeenCalledWith('/api/v1/health', { signal: undefined });
+  });
+
   it('uses the configured API base and validates the response', async () => {
     vi.stubEnv('VITE_API_BASE_URL', 'http://example.test/api/v1/');
     const fetchMock = vi.fn().mockResolvedValue(

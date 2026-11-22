@@ -13,9 +13,11 @@ Copy-Item .env.example .env
 pnpm dev
 ```
 
-Set `VITE_API_BASE_URL` to the backend's versioned HTTP(S) API base. Vite
-variables are public and must never contain secrets. The development server
-uses port 5175. Ensure the backend allows its origin.
+Production builds use `VITE_API_BASE_URL` for the backend's versioned HTTP(S)
+API. Local development uses Vite's same-origin `/api` proxy to
+`http://localhost:3000`; set `VITE_API_PROXY_TARGET` to override that target.
+Vite variables are public and must never contain secrets. The development
+server uses port 5175.
 
 ## Commands
 
@@ -43,6 +45,11 @@ inactive and soft-deleted services). Categories with assigned services or
 non-deleted subcategories cannot be deleted. Deletion is a soft delete; category
 history and URLs are retained, so a deleted category's URL cannot be reused.
 Renaming a category from this page preserves its existing public URL.
+Click a category name to see services assigned to it and its subcategories,
+their category mapping, and the number of provider listings. Editing a category
+also shows these mappings. Users with `services.manage` can add a service to
+the selected category or soft-delete a service that has no provider listings;
+inactive and unapproved listings also prevent deletion.
 
 The users page can update email, status, customer name and roles supported by
 the user's existing profiles. Changing an email requires re-verification.

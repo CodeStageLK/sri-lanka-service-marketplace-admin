@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 export function Tooltip({ children, label }: { children: ReactNode; label: string }) {
-  return <span className="group relative inline-flex" aria-label={label}><span aria-hidden="true">{children}</span><span role="tooltip" className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded-md bg-primary px-2 py-1 text-xs text-primary-foreground group-hover:block group-focus-within:block">{label}</span></span>;
+  return <span className="group relative inline-flex" aria-label={label}><span aria-hidden="true">{children}</span><span role="tooltip" className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded-md bg-card-featured-bg px-2 py-1 text-xs text-card-featured-text group-hover:block group-focus-within:block">{label}</span></span>;
 }
 
 export function Pagination({ page, totalPages, onPageChange }: { page: number; totalPages: number; onPageChange: (page: number) => void }) {

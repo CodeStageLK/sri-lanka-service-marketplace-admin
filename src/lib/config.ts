@@ -9,6 +9,10 @@ const apiBaseUrlSchema = z.string().url().pipe(z.string().refine(
 ));
 
 export function getApiBaseUrl(): string {
+  if (import.meta.env.MODE === 'development') {
+    return '/api/v1';
+  }
+
   const parsed = apiBaseUrlSchema.safeParse(import.meta.env.VITE_API_BASE_URL);
   if (!parsed.success) {
     throw new Error('VITE_API_BASE_URL must be set to a valid HTTP(S) API URL.');

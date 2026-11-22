@@ -28,14 +28,14 @@ export function FormField({ label, htmlFor, description, error, required, childr
   );
 }
 
-const inputClassName = 'min-h-11 w-full rounded-md border border-border bg-card px-3 py-2 text-foreground placeholder:text-foreground-secondary disabled:cursor-not-allowed disabled:opacity-60';
+const inputClassName = 'min-h-11 w-full rounded-md border border-input-border bg-input-bg px-3 py-2 text-foreground placeholder:text-foreground-secondary disabled:cursor-not-allowed disabled:opacity-60';
 
 export function Input({ className, ...props }: ComponentProps<'input'>) {
   return <input className={cn(inputClassName, className)} {...props} />;
 }
 
 export function Textarea({ className, ...props }: TextareaHTMLAttributes<HTMLTextAreaElement>) {
-  return <textarea className={cn('min-h-28 w-full rounded-md border border-border bg-card px-3 py-2 text-foreground', className)} {...props} />;
+  return <textarea className={cn('min-h-28 w-full rounded-md border border-input-border bg-input-bg px-3 py-2 text-foreground', className)} {...props} />;
 }
 
 export function Select({ className, ...props }: SelectHTMLAttributes<HTMLSelectElement>) {

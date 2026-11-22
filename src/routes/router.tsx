@@ -5,6 +5,7 @@ import { DashboardPage } from '@/pages/dashboard-page';
 import { AdminLoginPage } from '@/pages/AdminLoginPage';
 import { AdminGuard } from '@/components/auth/AdminGuard';
 import { MasterDataPage } from '@/pages/MasterDataPage';
+import { ServiceCategoriesPage } from '@/pages/ServiceCategoriesPage';
 import { ProvidersPage } from '@/pages/AdminProvidersPage';
 import { UsersPage } from '@/pages/AdminUsersPage';
 
@@ -18,6 +19,7 @@ export const router = createBrowserRouter([
         { path: '/', element: <DashboardPage /> },
         { path: '/dashboard', element: <DashboardPage /> },
         { path: '/master-data', element: <MasterDataPage /> },
+        { path: '/master-data/service-categories', element: <ServiceCategoriesPage /> },
         { path: '/providers', element: <ProvidersPage /> },
         { path: '/users', element: <UsersPage /> },
       ],

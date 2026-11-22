@@ -1,5 +1,5 @@
 import { apiRequest } from '@/services/api-client';
-import type { AdminCategoryListResponse, Category, CategoryListResponse, Service, ServiceListResponse } from '@/types/catalog';
+import type { AdminCategoryListResponse, AdminCategoryServiceListResponse, Category, CategoryListResponse, Service, ServiceListResponse } from '@/types/catalog';
 
 export interface CatalogQuery {
   page?: number;
@@ -33,6 +33,18 @@ export function listServices(query: CatalogQuery = {}) {
 
 export function listAdminCategories(token: string, query: CatalogQuery = {}) {
   return apiRequest<AdminCategoryListResponse>(`/admin/categories${queryString(query)}`, { accessToken: token, signal: query.signal });
+}
+
+export function listAdminCategoryServices(token: string, categoryId: string, query: CatalogQuery = {}) {
+  return apiRequest<AdminCategoryServiceListResponse>(`/admin/categories/${encodeURIComponent(categoryId)}/services${queryString(query)}`, { accessToken: token, signal: query.signal });
+}
+
+export function createService(token: string, categoryId: string, name: string) {
+  return apiRequest<Service>('/admin/services', { method: 'POST', accessToken: token, body: { categoryId, name } });
+}
+
+export function deleteService(token: string, id: string) {
+  return apiRequest<void>(`/admin/services/${encodeURIComponent(id)}`, { method: 'DELETE', accessToken: token });
 }
 
 export function createCategory(token: string, name: string) {

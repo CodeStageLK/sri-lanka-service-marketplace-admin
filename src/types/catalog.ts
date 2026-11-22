@@ -54,6 +54,20 @@ export interface AdminCategoryListResponse {
   pagination: CatalogPagination;
 }
 
+export interface AdminCategoryService {
+  id: string;
+  name: string;
+  isActive: boolean;
+  deletedAt: string | null;
+  category: { id: string; name: string };
+  listingCount: number;
+}
+
+export interface AdminCategoryServiceListResponse {
+  items: AdminCategoryService[];
+  pagination: CatalogPagination;
+}
+
 export interface ServiceListResponse {
   items: Service[];
   pagination: CatalogPagination;
